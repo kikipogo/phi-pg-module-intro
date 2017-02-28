@@ -4,13 +4,13 @@ $(document).ready(function(){
   getBookData();
   function getBookData() {
     $.ajax({
-      type: 'GET',
+      type: 'GET', // sql SELECT
       url: '/books',
       success: function(response) {
         console.log('response', response);
         $('#bookShelf').empty();
         for (var i = 0; i < response.length; i++) {
-          $('#bookShelf').append('<li>Title: ' + response[i].title + ', Author: ' + response[i].author + '</li>');
+          $('#bookShelf').append('<li>Title: ' + response[i].title + ', Author: ' + response[i].author + ', Edition: ' + response[i].edition + ', Publisher: ' + response[i].publisher +  '</li>');
         }
       }
     });
@@ -20,8 +20,11 @@ $(document).ready(function(){
     var newBookObject = {};
     newBookObject.title = $('#newBookTitle').val();
     newBookObject.author = $('#newBookAuthor').val();
+    newBookObject.edition = $('#newBookEdition').val();
+    newBookObject.publisher = $('#newBookPublisher').val();
+    console.log(newBookObject);
     $.ajax({
-      type: 'POST',
+      type: 'POST', // sql INSERT
       url: '/books/new',
       data: newBookObject,
       success: function(response){
