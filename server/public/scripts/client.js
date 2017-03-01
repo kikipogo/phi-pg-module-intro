@@ -10,7 +10,7 @@ $(document).ready(function(){
         console.log('response', response);
         $('#bookShelf').empty();
         for (var i = 0; i < response.length; i++) {
-          $('#bookShelf').append('<li>Title: ' + response[i].title + ', Author: ' + response[i].author + ', Edition: ' + response[i].edition + ', Publisher: ' + response[i].publisher +  '</li>');
+          $('tbody').append('<tr><td> ' + response[i].title + ' </td><td> ' + response[i].author + ' </td><td>  ' + response[i].edition + ' </td><td> ' + response[i].publisher + ' </td> </tr>')
         }
       }
     });
